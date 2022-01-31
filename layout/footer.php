@@ -1,5 +1,5 @@
 
-<footer class="text-center text-white" style="background-color: #caced1;">
+<footer class="text-center text-white" style="background-color: #C1C8E4!important;">
   <div class="container p-4">
     <section class="">
       <div class="row">

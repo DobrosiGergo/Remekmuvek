@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 ?>
 <header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="background-color: #C1C8E4!important;">
   <div class="container">
     <a class="navbar-brand" href="..\index.php">Főoldal</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
