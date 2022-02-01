@@ -19,7 +19,34 @@
         </div>
 
         <div class="main">
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4"></h1>
+                    <p class="lead"></p>
+                </div>
+            </div>
+            <hr>
 
+            <div class="container">
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Kategóriák
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                    </div>
+                </div>
+                <br>
+                <div class="card" style="width: 30rem;">
+                    <img class="card-img-top" src="" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
+                        <a href="#" class="btn btn-primary w-100">Szerkesztés</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="footer">
             <?php
