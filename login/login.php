@@ -29,6 +29,10 @@ if (isset($_POST['login'])) {
             echo '<div class="alert alert-danger" role="alert">Nem megfelelő jelszó!</div>';
         }
     }
+    else{
+        echo '<div class="alert alert-danger" role="alert" style="padding-top:60px">Nincsen ilyen felhasználó!</div>';
+
+    }
 }
 
 ?>

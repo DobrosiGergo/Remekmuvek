@@ -11,8 +11,7 @@ if (isset($_POST['reg'])) {
     $registersql = "INSERT INTO felhasznalok (nev,felhasznalonev,passwd,email,jogosultsag ) VALUES('$fullname', '$username', '$password', '$email', '$tp');";
     $utasitas = $dbc->prepare($registersql);
     $utasitas->execute();
-    print_r($utasitas);
-    //header ("Location:login.php");
+    header ("Location:login.php");
 }
 ?>
 <!DOCTYPE html>

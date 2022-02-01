@@ -1,6 +1,19 @@
+<?php
+include '../kapcsolodas.php';
+$query = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.id";
+$parancs = $dbc -> prepare($query);
+$parancs -> execute();
+$adat = $parancs->fetchAll(PDO::FETCH_ASSOC);
+$kategoriasql = "SELECT * FROM kategoriak";
+$parancs = $dbc -> prepare($kategoriasql);
+$parancs -> execute();
+$adatkategoria = $parancs->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,30 +35,40 @@
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h1 class="display-4"></h1>
-                    <p class="lead"></p>
+                    <p class="lead">
+                    <form  method="POST">
+               <div class="mb-3">
+                                <select class="form-select w-25" aria-label="Default select example" name="varos">
+                                    <option selected>Keresés kategoria szerint.</option>
+                                    <?php foreach($adatkategoria as $value): ?>
+                                    <option value="<?=$value["nev"]?>" required><?=$value["nev"]?></option>
+                                    <?php endforeach;?>
+                                </select>
+               </div>
+               <div class="input-group-prepend">
+                                <input type="submit" class="btn btn-secondary my-3 w-25" value="Keresés" name="search" />
+                            </div>
+               </form>
+                    </p>
                 </div>
             </div>
             <hr>
 
-            <div class="container">
-                <div class="dropdown show">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Kategóriák
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                    </div>
+            <div class="container-fluid">
+              
                 </div>
                 <br>
+                <?php foreach($adat as $sor) :?>
                 <div class="card" style="width: 30rem;">
-                    <img class="card-img-top" src=" alt="Card image cap">
+                    <img class="card-img-top" src="../files/kepek/borito/<?=$sor["kep3"]?>" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
+                        <h5 class="card-title"><?=$sor["nev"]?></h5>
+                        <p class="card-text"><?=$sor["leiras"]?></p>
+                        <p class="card-text"><?=$sor["kategoria"]?></p>
                         <a href="#" class="btn btn-primary w-100">Megtekintés</a>
                     </div>
                 </div>
+                <?php endforeach;?>
             </div>
         </div>
 

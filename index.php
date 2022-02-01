@@ -21,13 +21,8 @@
       <main>
         <div class="jumbotron jumbotron-fluid" style="background-color: #EDF5E1;">
           <div class="container">
-            <h1 class="display-4"></h1>
-            <p class="lead"></p>
-            <div class="card" style="width: 60rem;">
-              <img src="files/kepek/indexkep.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text"></p>
-              </div>
+            <h1 class="display-4">Üdvözöljük!</h1>
+            <p class="lead">Ez a weboldal a világon ismert Remekművek bemutatására készült. Tekintse meg ön is.</p>
             </div>
           </div>
         </div>
