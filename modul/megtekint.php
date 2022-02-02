@@ -12,17 +12,20 @@ $adatkategoria = $parancs->fetchAll(PDO::FETCH_ASSOC);
 if (isset($_POST['search'])) {
 $kategoria = $_POST['kategoriakeres'];
     if ($kategoria != "Keresés kategoria szerint.") {
-        $query = "SELECT id FROM kategoriak WHERE kategoria='$kategoria'";
+        $query = "SELECT kat_id FROM kategoriak WHERE kategoria='$kategoria'";
         $utasitas = $dbc->prepare($query);
         $utasitas->execute();
         $result = $utasitas->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as  $kulcs => $ertek) {
-            $id = $ertek['id'];
+            $id = $ertek['kat_id'];
         }
-        $sql = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.id  WHERE kategoria_id='$id'";
+        $sql = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.kat_id  WHERE kategoria_id='$id'";
         $keresquery = $dbc->prepare($sql);
         $keresquery->execute();
         $adat = $keresquery->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($adat)){
+            echo '<div class="alert alert-danger" role="alert" style="padding-top:60px">Sajnos nincsen ilyen kategóriával elátott adatunk!</div>';
+        }
 
     }
     else{

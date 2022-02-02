@@ -88,7 +88,7 @@ if (isset($_POST['upload'])) {
                     $insertinto = "INSERT INTO remekmuvek(nev,leiras,varos_id,orszag_id,stilus_id,kategoria_id,kep1,kep2,kep3) VALUES('$nev','$leiras','$idvaros','$idorszag','$idstilus','$idkategoria','$filenewname','$filenamenewb','$filenamenew3')";
                     $beepites = $dbc->prepare($insertinto);
                     $beepites->execute();
-                    //header("Location:../index.php?sikeresfeltoltes");
+                    header("Location:../index.php?sikeresfeltoltes");
                 } else {
                     echo "Válassza ki a kategóriát vagy a stílust!";
                 }
