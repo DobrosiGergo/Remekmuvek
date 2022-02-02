@@ -1,6 +1,7 @@
 <?php
 include '../kapcsolodas.php';
 $query = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.id";
+
 $parancs = $dbc -> prepare($query);
 $parancs -> execute();
 $adat = $parancs->fetchAll(PDO::FETCH_ASSOC);
@@ -8,6 +9,26 @@ $kategoriasql = "SELECT * FROM kategoriak";
 $parancs = $dbc -> prepare($kategoriasql);
 $parancs -> execute();
 $adatkategoria = $parancs->fetchAll(PDO::FETCH_ASSOC);
+if (isset($_POST['search'])) {
+$kategoria = $_POST['kategoriakeres'];
+    if ($kategoria != "Keresés kategoria szerint.") {
+        $query = "SELECT id FROM kategoriak WHERE kategoria='$kategoria'";
+        $utasitas = $dbc->prepare($query);
+        $utasitas->execute();
+        $result = $utasitas->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as  $kulcs => $ertek) {
+            $id = $ertek['id'];
+        }
+        $sql = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.id  WHERE kategoria_id='$id'";
+        $keresquery = $dbc->prepare($sql);
+        $keresquery->execute();
+        $adat = $keresquery->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+    else{
+        echo '<div class="alert alert-danger" role="alert" style="padding-top:60px">Válasszon ki egy kategoriát!</div>';
+    }
+}
 
 ?>
 
@@ -38,10 +59,10 @@ $adatkategoria = $parancs->fetchAll(PDO::FETCH_ASSOC);
                     <p class="lead">
                     <form  method="POST">
                <div class="mb-3" >
-                   <select class="form-select w-25" aria-label="Default select example" name="varos">
-                                    <option selected>Keresés kategoria szerint.</option>
+                   <select class="form-select w-25" aria-label="Default select example" name="kategoriakeres">
+                                    <option selected name="kategoriakeres">Keresés kategoria szerint.</option>
                                     <?php foreach($adatkategoria as $value): ?>
-                                    <option value="<?=$value["kategoria"]?>" required><?=$value["kategoria"]?></option>
+                                    <option value="<?=$value["kategoria"]?>" required ><?=$value["kategoria"]?></option>
                                     <?php endforeach;?>
                                 </select>
                </div>
@@ -65,7 +86,7 @@ $adatkategoria = $parancs->fetchAll(PDO::FETCH_ASSOC);
                         <h5 class="card-title"><?=$sor["nev"]?></h5>
                         <p class="card-text"><?=$sor["leiras"]?></p>
                         <p class="card-text"><?=$sor["kategoria"]?></p>
-                        <a href="#" class="btn btn-primary w-100">Megtekintés</a>
+                        <a href="megtekintes.php?id=<?=$sor["id"]?>" class="btn btn-primary w-100">Megtekintés</a>
                     </div>
                 </div>
                 <?php endforeach;?>
