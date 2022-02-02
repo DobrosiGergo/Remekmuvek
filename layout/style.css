@@ -30,8 +30,7 @@ grid-area: main;
     object-fit: cover;
 }
 .card{
-  
-  display:inline-block!important;
+
   padding:10px;
   margin: 10px;
 }

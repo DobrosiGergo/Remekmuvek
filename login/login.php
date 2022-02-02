@@ -61,7 +61,7 @@ if (isset($_POST['login'])) {
             <div class="my-3 col-md-6 offset-md-3 col-xl-4 offset-xl-4 ">
                 <div class="card card-body">
                     <h3 class="card-title text-center">Bejelentkezés</h3>
-                    <form method="post">
+                    <form method="post" >
                         <div class="mb-3">
                             <label class="form-label" for="username">Felhasználói név</label>
                             <input class="form-control" type="text" id="username" name="username" placeholder="Név" required />

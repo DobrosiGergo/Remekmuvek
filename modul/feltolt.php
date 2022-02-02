@@ -132,7 +132,7 @@ if (isset($_POST['upload'])) {
         <div class="main">
             <div class="container-fluid">
                 <div style="margin:  0 auto; width: 100%; max-width:500px; margin-left:500px">
-                    <div class="card  card-body" style="width: 50rem; height:70rem;">
+                    <div class="card  card-body" style="width: 50rem; height:60rem;">
                         <h3 class="card-title text-center">Feltöltés</h3>
                         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
