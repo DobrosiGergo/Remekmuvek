@@ -54,36 +54,36 @@ if (isset($_POST['upload'])) {
                 move_uploaded_file($fileTmpNameb, $fileDestinationb);
                 move_uploaded_file($fileTmpName3, $fileDestination3);
                 if ($_POST['select'] != "Válasszon ki egy képet a megjelnítésnek" || $_POST['select2'] != "Válasszon ki egy stílust") {
-                    $query = "SELECT id FROM kategoriak WHERE kategoria='$kategoria'";
+                    $query = "SELECT kat_id FROM kategoriak WHERE kategoria='$kategoria'";
                     $utasitas = $dbc->prepare($query);
                     $utasitas->execute();
                     $adatkategoria = $utasitas->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($adatkategoria as  $kulcskategoria => $ertekkategoria) {
-                        $idkategoria = $ertekkategoria['id'];
+                        $idkategoria = $ertekkategoria['kat_id'];
                     }
                     ///////
-                    $query2 = "SELECT id FROM varosok WHERE varos='$varos'";
+                    $query2 = "SELECT varos_id FROM varosok WHERE varos='$varos'";
                     $utasitas2 = $dbc->prepare($query2);
                     $utasitas2->execute();
                     $adatvaros = $utasitas2->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($adatvaros as  $kulcsvaros => $ertekvaros) {
-                        $idvaros = $ertekvaros['id'];
+                        $idvaros = $ertekvaros['varos_id'];
                     }
                     //////
-                    $query3 = "SELECT id FROM orszagok WHERE orszag='$orszag'";
+                    $query3 = "SELECT orszag_id FROM orszagok WHERE orszag='$orszag'";
                     $utasitas3 = $dbc->prepare($query3);
                     $utasitas3->execute();
                     $adatorszag = $utasitas3->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($adatorszag as  $kulcsorszag => $ertekorszag) {
-                        $idorszag = $ertekorszag['id'];
+                        $idorszag = $ertekorszag['orszag_id'];
                     }
                     //////////////////
-                    $querystilus = "SELECT id FROM stilusok WHERE stilus='$stilus'";
+                    $querystilus = "SELECT stilus_id FROM stilusok WHERE stilus='$stilus'";
                     $utasitasstilus = $dbc->prepare($querystilus);
                     $utasitasstilus->execute();
                     $adatstilus = $utasitasstilus->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($adatstilus as  $kulcsstilus => $ertekstilus) {
-                        $idstilus = $ertekstilus['id'];
+                        $idstilus = $ertekstilus['stilus_id'];
                     }
                     $insertinto = "INSERT INTO remekmuvek(nev,leiras,varos_id,orszag_id,stilus_id,kategoria_id,kep1,kep2,kep3) VALUES('$nev','$leiras','$idvaros','$idorszag','$idstilus','$idkategoria','$filenewname','$filenamenewb','$filenamenew3')";
                     $beepites = $dbc->prepare($insertinto);

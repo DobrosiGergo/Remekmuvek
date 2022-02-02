@@ -2,7 +2,7 @@
 
 //MySQl kapcsolódási adatok
 $host = 'localhost';
-$db = 'remekmuvekdb';
+$db = 'remekmuvekbeta';
 $user = 'root';
 $password = '';
 

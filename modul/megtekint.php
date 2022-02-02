@@ -1,6 +1,6 @@
 <?php
 include '../kapcsolodas.php';
-$query = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.id";
+$query = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.kat_id";
 
 $parancs = $dbc -> prepare($query);
 $parancs -> execute();
