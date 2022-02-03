@@ -27,14 +27,10 @@ if (isset($_POST['reg'])) {
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="nav">
             <?php
             include_once '../layout/header3.php'
             ?>
-        </div>
-        <div class="main">
-            <div class="my-3 col-md-6 offset-md-3 col-xl-4 offset-xl-4 ">
+            <div class="my-3 col-md-6 offset-md-3 col-xl-4 offset-xl-4 " style="margin-left:100px">
                 <div class="card card-body">
                     <h3 class="card-title text-center">Regisztráció</h3>
                     <form method="post">
@@ -61,20 +57,16 @@ if (isset($_POST['reg'])) {
                     <option>Szerkesztő</option>
                     <option>Felhasználó</option>
                 </select>
-            </div>
             <div>
-                <button class=" btn btn-secondary mb-3 w-100" type="submit" name="reg">Regisztráció</button>
+                <button class=" btn btn-primary mb-3 w-100" type="submit" name="reg">Regisztráció</button>
                                 <div class="float-end"><a href="login.php">Bejelentkezés</a></div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="footer">
             <?php
             include_once '../layout/footer.php'
             ?>
-        </div>
 
     </div>
 

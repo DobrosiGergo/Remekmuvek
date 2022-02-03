@@ -16,6 +16,7 @@ if (isset($_POST['login'])) {
         $type = $row['jogosultsag'];
         $email = $row['email'];
         $verify = password_verify($passwd, $hash2);
+        print_r($hash2);
         if ($verify) {
             session_start();
             $_SESSION['username'] = $user;
@@ -23,7 +24,7 @@ if (isset($_POST['login'])) {
             $_SESSION['type'] = $type;
             $_SESSION['van'] = 1;
             $_SESSION['email'] = $email;
-            header("Location:..\index.php");
+           header("Location:..\index.php");
         } else {
             header("Lcation: login.php");
             echo '<div class="alert alert-danger" role="alert">Nem megfelelő jelszó!</div>';
@@ -50,15 +51,11 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="nav">
             <?php
             include_once '../layout/header3.php'
             ?>
-        </div>
 
-        <div class="main">
-            <div class="my-3 col-md-6 offset-md-3 col-xl-4 offset-xl-4 ">
+            <div class="my-3 col-md-6 offset-md-3 col-xl-4 offset-xl-4 " style="margin-left:100px">
                 <div class="card card-body">
                     <h3 class="card-title text-center">Bejelentkezés</h3>
                     <form method="post" >
@@ -70,19 +67,15 @@ if (isset($_POST['login'])) {
                             <label class="form-label" for="password">Jelszó</label>
                             <input class="form-control" type="password" id="password" name="password" placeholder="Jelszó" required />
                         </div>
-                        <button type="submit" name="login" class=" btn btn-secondary  my-3 w-100  ">Bejelentkezés</button>
+                        <button type="submit" name="login" class=" btn btn-primary  my-3 w-100  ">Bejelentkezés</button>
                         <div>
                             <div class="float-end"><a class="card-link " href="register.php">Regisztráció</a></div>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-        <div class="footer">
             <?php
             include_once '../layout/footer.php'
             ?>
-        </div>
 
     </div>
 

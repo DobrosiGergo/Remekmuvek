@@ -1,19 +1,60 @@
 <?php
 include '../kapcsolodas.php';
-if (isset($_POST['upload'])) {
+$id = $_GET['id'];
+if (isset($_POST['update'])) {
+    $id = $_POST['id'];
     $varos = $_POST['varos'];
     $orszag = $_POST['orszag'];
     $nev = $_POST['nev'];
     $leiras = $_POST['leiras'];
     $kategoria = $_POST['select'];
     $stilus = $_POST['select2'];
-    
-    
-} else {
-    $sql = "SELECT kategoria FROM kategoriak";
+    ///varos
+    $varossql = "SELECT varos_id FROM varosok WHERE varos='$varos'";
+    $varosutasitas = $dbc->prepare($varossql);
+    $varosutasitas->execute();
+    $varosrow = $varosutasitas->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($varosrow as $varos1) {
+        $varosid = $varos1["varos_id"];
+    }
+
+    //////////orszag
+    $orszagsql = "SELECT orszag_id FROM orszagok WHERE orszag='$orszag'";
+    $orszagutasitas = $dbc->prepare($orszagsql);
+    $orszagutasitas->execute();
+    $orszagrow = $orszagutasitas->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($orszagrow as $orszag1) {
+        $orszagid = $orszag1["orszag_id"];
+    }
+
+    //////////kategoria
+    $kategoriasql = "SELECT kat_id FROM kategoriak WHERE kategoria='$kategoria'";
+    $kategoriautasitas = $dbc->prepare($kategoriasql);
+    $kategoriautasitas->execute();
+    $kategoriagrow = $kategoriautasitas->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($kategoriagrow as $kat1) {
+        $kategoriaid = $kat1["kat_id"];
+    }
+
+    //////////stilus
+    $stilussql = "SELECT stilus_id FROM stilusok WHERE stilus='$stilus'";
+    $stilusutasitas = $dbc->prepare($stilussql);
+    $stilusutasitas->execute();
+    $stilusrow = $stilusutasitas->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($stilusrow as $stilus1) {
+        $stilusid = $stilus1["stilus_id"];
+    }
+
+
+
+    $sql = "UPDATE remekmuvek SET nev='$nev',leiras='$leiras',varos_id='$varosid',orszag_id='$orszagid',stilus_id='$stilusid',kategoria_id='$kategoriaid' WHERE id='$id'";
     $utasitas = $dbc->prepare($sql);
     $utasitas->execute();
-    $adat = $utasitas->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $sql = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.kat_id  INNER JOIN stilusok ON remekmuvek.stilus_id = stilusok.stilus_id  INNER JOIN varosok ON remekmuvek.varos_id = varosok.varos_id  INNER JOIN orszagok ON remekmuvek.orszag_id = orszagok.orszag_id WHERE remekmuvek.id='$id'";
+    $keresquery = $dbc->prepare($sql);
+    $keresquery->execute();
+    $szerkesztadat = $keresquery->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 <!DOCTYPE html>
@@ -30,25 +71,27 @@ if (isset($_POST['upload'])) {
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="nav">
             <?php
             include_once '../layout/header2.php'
             ?>
-        </div>
-
-        <div class="main">
+            <div class="line">
             <div class="container-fluid">
-                <div style="margin:  0 auto; width: 100%; max-width:500px; margin-left:500px">
-                    <div class="card  card-body" style="width: 50rem; height:60rem;">
+                <div style="margin:  0 auto; width: 100%; max-width:500px; margin-left:100px">
+                    <div class="card  card-body" style="width: 50rem; height:auto;">
                         <h3 class="card-title text-center">Szerkesztés</h3>
                         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
+                            <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                <input type="text" hidden value="<?= $szerkeszt["id"] ?>" name="id">
+                            <?php endforeach; ?>
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Név:</label>
-                                <input type="text" name="nev" class="form-control w-50 align-items-center" id="formGroupExampleInput" required>
+                                <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                    <input type="text" name="nev" class="form-control w-50 align-items-center" id="formGroupExampleInput" value="<?= $szerkeszt["nev"] ?>" required>
+                                <?php endforeach; ?>
                             </div>
                             <br>
                             <div class="form-group">
+                                <label>A szerkesztéshez válassza ki a megjelenített adatokból a szerkeszteni kívánt adatot!</label>
                                 <?php
                                 $varosokasd = "SELECT varos FROM varosok";
                                 $parancs = $dbc->prepare($varosokasd);
@@ -57,7 +100,9 @@ if (isset($_POST['upload'])) {
                                 ?>
                                 <div class="mb-3">
                                     <select class="form-select" aria-label="Default select example" name="varos">
-                                        <option selected>Válasszon ki egy várost</option>
+                                        <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                            <option value="<?= $szerkeszt["varos"] ?>" selected><?= $szerkeszt["varos"] ?></option>
+                                        <?php endforeach; ?>
                                         <?php foreach ($adatvaros as $sor) : ?>
                                             <option value="<?= $sor["varos"] ?>" required><?= $sor["varos"] ?></option>
                                         <?php endforeach; ?>
@@ -72,7 +117,9 @@ if (isset($_POST['upload'])) {
                                     ?>
                                     <div class="mb-3">
                                         <select class="form-select" aria-label="Default select example" name="orszag">
-                                            <option selected>Válasszon ki egy országot</option>
+                                            <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                                <option value="<?= $szerkeszt["orszag"] ?>" selected><?= $szerkeszt["orszag"] ?></option>
+                                            <?php endforeach; ?>
                                             <?php foreach ($adatorszag as $sorok) : ?>
                                                 <option value="<?= $sorok["orszag"] ?>" required><?= $sorok["orszag"] ?></option>
                                             <?php endforeach; ?>
@@ -80,13 +127,24 @@ if (isset($_POST['upload'])) {
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Leírás: </label>
-                                        <textarea class="form-control w-50" name="leiras" id="exampleFormControlTextarea1" style="height: 20vh;" rows="3" maxlength="250" required></textarea>
+                                        <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                            <textarea class="form-control w-50" name="leiras" id="exampleFormControlTextarea1" style="height: 20vh;" rows="3" maxlength="250" required><?= $szerkeszt["leiras"] ?></textarea>
+                                        <?php endforeach; ?>
+
                                     </div>
                                     <br>
                                     <div class="mb-3">
+                                        <?php
+                                        $kategoria = "SELECT kategoria FROM kategoriak";
+                                        $parancs2 = $dbc->prepare($kategoria);
+                                        $parancs2->execute();
+                                        $adatkategoria = $parancs2->fetchAll(PDO::FETCH_ASSOC);
+                                        ?>
                                         <select class="form-select" aria-label="Default select example" name="select">
-                                            <option selected>Válasszon ki egy kategóriát</option>
-                                            <?php foreach ($adat as $sor) : ?>
+                                            <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                                <option value="<?= $szerkeszt["kategoria"] ?>" selected><?= $szerkeszt["kategoria"] ?></option>
+                                            <?php endforeach; ?>
+                                            <?php foreach ($adatkategoria as $sor) : ?>
                                                 <option value="<?= $sor["kategoria"] ?>" required><?= $sor["kategoria"] ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -99,27 +157,31 @@ if (isset($_POST['upload'])) {
                                     ?>
                                     <div class="mb-3">
                                         <select class="form-select" aria-label="Default select example" name="select2">
-                                            <option selected>Válasszon ki egy stílust</option>
+                                            <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                                <option value="<?= $szerkeszt["stilus"] ?>" selected><?= $szerkeszt["stilus"] ?></option>
+                                            <?php endforeach; ?>
                                             <?php foreach ($adatstilus as $stilusertek) : ?>
                                                 <option value="<?= $stilusertek["stilus"] ?>" required><?= $stilusertek["stilus"] ?></option>
-                                            <?php endforeach; ?>
+                                                <?php endforeach; ?>
                                         </select>
                                     </div>
-                                        <input type="submit" class="btn btn-secondary my-3 w-100" value="Szerkesztés" name="update" />
-                                    </div>
+                                </div>
+                                <?php foreach ($szerkesztadat as $szerkeszt) : ?>
+                                    <img src="../files/kepek/borito/<?= $szerkeszt['kep3'] ?>" style="width: 800px;height:300px; display:inline-block;" class="card-img-bottom img-fluid">
+                                    <br>
+                                    <img src="../files/kepek/megjelenit/<?= $szerkeszt['kep1'] ?>" style="width: 800px;height:300px;  display:inline-block;" class="card-img-bottom img-fluid">
+                                    <br>
+                                    <img src="../files/kepek/megjelenit/<?= $szerkeszt['kep2'] ?>" style="width: 800px;height:300px;  display:inline-block;" class="card-img-bottom img-fluid">
+                                    <input type="submit" class="btn btn-primary my-3 w-100" value="Szerkesztés" name="update" />
+                                    <?php endforeach; ?>
                         </form>
                     </div>
                 </div>
             </div>
-            <br>
-        </div>
-    </div>
-
-    <div class="footer">
+            </div>
         <?php
         include_once '../layout/footer.php'
         ?>
-    </div>
 
     </div>
 

@@ -19,47 +19,45 @@ $adat = $parancs->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="nav">
-            <?php
-            include_once '../layout/header2.php'
-            ?>
-        </div>
-        <div class="main">
-            <main>
-                <div class="container-fluid">
-                    <?php foreach($adat as $sor) :?>
-                    <div class="card"style="width: 500px; margin:0 auto;" >
-                        <div class="card-body">
-                            <h5 class="card-title"><?=$sor["nev"]?></h5>
-                            <p class="card-text"><?=$sor["leiras"]?></p>
-                            <p class="card-text"><small class="text-muted">A stílusa: <?=$sor["stilus"]?></small></p>
-                           <p class="card-text"><small class="text-muted">Az Építészete: <?=$sor["kategoria"]?></small></p>
-                            <p class="card-text"><small class="text-muted">Ország : <?=$sor["orszag"]?></small></p>
-                            <p class="card-text"><small class="text-muted">Város: <?=$sor["varos"]?></small></p>
-                        </div>
-                        <img src="../files/kepek/borito/<?=$sor['kep3']?>" style="width: 500px;height:300px;" class="card-img-bottom img-fluid">
-                        <br>
-                        <img src="../files/kepek/megjelenit/<?=$sor['kep1']?>" style="width: 500px;height:300px;"  class="card-img-bottom img-fluid">
-                        <br>
-                       <img src="../files/kepek/megjelenit/<?=$sor['kep2']?>" style="width: 500px;height:300px;"  class="card-img-bottom img-fluid">
-
+    <?php
+    include_once '../layout/header2.php'
+    ?>
+    <div class="line">
+        <div class="container-fluid">
+            <?php foreach ($adat as $sor) : ?>
+                <div class="card" style="width: 700px; margin-left:200; display:inline-block">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $sor["nev"] ?></h5>
+                        <p class="card-text"><?= $sor["leiras"] ?></p>
+                        <p class="card-text"><small class="text-muted">A stílusa: <?= $sor["stilus"] ?></small></p>
+                        <p class="card-text"><small class="text-muted">Az Építészete: <?= $sor["kategoria"] ?></small></p>
+                        <p class="card-text"><small class="text-muted">Ország : <?= $sor["orszag"] ?></small></p>
+                        <p class="card-text"><small class="text-muted">Város: <?= $sor["varos"] ?></small></p>
                     </div>
-                 <?php endforeach;?>
+
                 </div>
-
-
-
-
-            </main>
         </div>
-        <div class="footer">
-            <?php
-            include_once '../layout/footer.php'
-            ?>
+        <div class="container-fluid">
+            <div class="card" style="width: 700px; display:inline-block">
+                <div class="body">
+                    <img src="../files/kepek/borito/<?= $sor['kep3'] ?>" style="width: 700px;height:200px;" class="card-img-bottom img-fluid">
+                    <br>
+                    <img src="../files/kepek/megjelenit/<?= $sor['kep1'] ?>" style="width: 700px;height:200px;" class="card-img-bottom img-fluid">
+                    <br>
+                    <img src="../files/kepek/megjelenit/<?= $sor['kep2'] ?>" style="width: 700px;height:200px;" class="card-img-bottom img-fluid">
+                </div>
+            </div>
         </div>
+        <?php endforeach; ?>
 
+        </main>
     </div>
+    <main>
+
+        <?php
+        include_once '../layout/footer.php'
+        ?>
+
 </body>
 
 </html>
