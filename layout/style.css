@@ -5,9 +5,8 @@
     object-fit: cover;
 }
 .card{
-
   padding:10px;
-  margin: 10px;
+  margin: 50px;
 }
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
@@ -66,7 +65,7 @@ a:focus {
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
-    height: auto;
+   height:1150vh;
 }
 
 #sidebar.active {
@@ -191,4 +190,26 @@ a:hover{
     position: relative;
     bottom: 0;
     z-index: 1;
+    margin-left: 50px;
+    width: 500px;
+    border: 2px solid skyblue;
+    border-radius: 10px;
+    padding:20px;
+  
+}
+#comment{
+    resize: none;
+    width: 400px;
+    height: 80px;
+    border: grey 0.2px solid;
+   
+
+}
+#upcomment{
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    margin-left: 120px;
 }

@@ -24,10 +24,10 @@
     <div class="main">
       <div class="line"></div>
 
-
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis deserunt accusamus dolore aliquam eos earum, cupiditate ipsum adipisci facilis, iusto ipsa quo vero quibusdam ex eveniet. Doloremque nam earum quibusdam.</p>
 
       <div class="line"></div>
-
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam rem, distinctio ratione fugiat tenetur doloribus ab fuga sunt eligendi, velit quidem. Nisi officia magnam voluptatem aspernatur facere cumque vero eius.</p>
 
 
       <div class="line"></div>

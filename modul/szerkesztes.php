@@ -70,7 +70,7 @@ if (isset($_POST['search'])) {
                     </select>
                 </div>
                 <div class="input-group-prepend">
-                    <input type="submit" class="btn btn-secondary my-3 w-25" value="Keresés" name="search" />
+                    <input type="submit" class="btn btn-primary my-3 w-25" value="Keresés" name="search" />
                 </div>
             </form>
             </p>

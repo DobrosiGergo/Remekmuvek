@@ -50,6 +50,7 @@ if (isset($_POST['update'])) {
     $sql = "UPDATE remekmuvek SET nev='$nev',leiras='$leiras',varos_id='$varosid',orszag_id='$orszagid',stilus_id='$stilusid',kategoria_id='$kategoriaid' WHERE id='$id'";
     $utasitas = $dbc->prepare($sql);
     $utasitas->execute();
+    header("Location:szerkesztes.php");
 } else {
     $sql = "SELECT * FROM remekmuvek INNER JOIN kategoriak ON remekmuvek.kategoria_id = kategoriak.kat_id  INNER JOIN stilusok ON remekmuvek.stilus_id = stilusok.stilus_id  INNER JOIN varosok ON remekmuvek.varos_id = varosok.varos_id  INNER JOIN orszagok ON remekmuvek.orszag_id = orszagok.orszag_id WHERE remekmuvek.id='$id'";
     $keresquery = $dbc->prepare($sql);

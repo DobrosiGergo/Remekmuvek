@@ -8,6 +8,9 @@ try {
     $sql = "DELETE FROM remekmuvek WHERE id='$id'";
     $utasitas = $dbc->prepare($sql);
     $utasitas->execute();
+    $sql2 ="DELETE FROM comments WHERE oldalszam='$id'";
+    $utasitas2 = $dbc->prepare($sql2);
+    $utasitas2->execute();
 } catch (PDOException $exc) {
     echo "Lekérdezési hiba: " . $exc->getTraceAsString();
 }

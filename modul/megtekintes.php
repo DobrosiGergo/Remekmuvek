@@ -23,7 +23,7 @@ if (isset($_POST['upcomment'])) {
     $fadat = $futasitas->fetchAll(PDO::FETCH_ASSOC);
 
 
-    $csql = "SELECT * FROM comments INNER JOIN felhasznalok ON comments.userid = felhasznalok.id comments.oldalszam='$id' ORDER BY comments.ido DESC ";
+    $csql = "SELECT * FROM comments INNER JOIN felhasznalok ON comments.userid = felhasznalok.id WHERE comments.oldalszam='$id' ORDER  BY comments.ido DESC ";
     $cparancs = $dbc->prepare($csql);
     $cparancs->execute();
     $cadat = $cparancs->fetchAll(PDO::FETCH_ASSOC);
@@ -128,7 +128,8 @@ else{
             <input type="text" name="date" hidden value="<?= date('Y-m-d H:i:s') ?>">
             <label for="comment"></label>
             <textarea name="comment" id="comment"></textarea>
-            <input type="submit" value="Kommentelek" name="upcomment">
+            <br>
+            <input type="submit" class="btn btn-primary" value="Kommentelek" name="upcomment" id="upcomment">
         </form>
     </div>
 <?php endif; ?>

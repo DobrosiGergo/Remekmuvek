@@ -132,7 +132,7 @@ if (isset($_POST['upload'])) {
 
             <div class="container-fluid">
                 <div style="margin:  0 auto; width: 100%; max-width:500px; margin-left:100px">
-                    <div class="card  card-body" style="width: 50rem; height:60rem;">
+                    <div class="card  card-body" style="width: 50rem; height:70rem;">
                         <h3 class="card-title text-center">Feltöltés</h3>
                         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
@@ -148,10 +148,10 @@ if (isset($_POST['upload'])) {
                                 $adatvaros = $parancs->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                 <div class="mb-3">
+                                <label for="varos" >Válasszon ki egy várost</label>
                                     <select class="form-select" aria-label="Default select example" name="varos">
-                                        <option selected>Válasszon ki egy várost</option>
                                         <?php foreach ($adatvaros as $sor) : ?>
-                                            <option value="<?= $sor["varos"] ?>" required><?= $sor["varos"] ?></option>
+                                            <option value="<?= $sor["varos"] ?>" id="varos" required><?= $sor["varos"] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -163,23 +163,25 @@ if (isset($_POST['upload'])) {
                                     $adatorszag = $parancs->fetchAll(PDO::FETCH_ASSOC);
                                     ?>
                                     <div class="mb-3">
+                                    <label for="orszag">Válasszon ki egy országot</label>
+
                                         <select class="form-select" aria-label="Default select example" name="orszag">
-                                            <option selected>Válasszon ki egy országot</option>
                                             <?php foreach ($adatorszag as $sorok) : ?>
-                                                <option value="<?= $sorok["orszag"] ?>" required><?= $sorok["orszag"] ?></option>
+                                                <option value="<?= $sorok["orszag"] ?>" id="orszag" required><?= $sorok["orszag"] ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Leírás: </label>
-                                        <textarea class="form-control w-50" name="leiras" id="exampleFormControlTextarea1" style="height: 20vh;" rows="3" maxlength="250" required></textarea>
+                                        <textarea class="form-control w-50" name="leiras" id="exampleFormControlTextarea1" style="height: 20vh;" rows="3" maxlength="350" required></textarea>
                                     </div>
                                     <br>
                                     <div class="mb-3">
+                                    <label for="kategoria" >Válasszon ki egy kategóriát</label>
+
                                         <select class="form-select" aria-label="Default select example" name="select">
-                                            <option selected>Válasszon ki egy kategóriát</option>
                                             <?php foreach ($adat as $sor) : ?>
-                                                <option value="<?= $sor["kategoria"] ?>" required><?= $sor["kategoria"] ?></option>
+                                                <option value="<?= $sor["kategoria"] ?>" id="kategoria" required><?= $sor["kategoria"] ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -190,10 +192,10 @@ if (isset($_POST['upload'])) {
                                     $adatstilus = $parancs->fetchAll(PDO::FETCH_ASSOC);
                                     ?>
                                     <div class="mb-3">
+                                    <label for="stilus">Válasszon ki egy stílust</label>
                                         <select class="form-select" aria-label="Default select example" name="select2">
-                                            <option selected>Válasszon ki egy stílust</option>
                                             <?php foreach ($adatstilus as $stilusertek) : ?>
-                                                <option value="<?= $stilusertek["stilus"] ?>" required><?= $stilusertek["stilus"] ?></option>
+                                                <option value="<?= $stilusertek["stilus"] ?>" id="stilus" required><?= $stilusertek["stilus"] ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -210,7 +212,7 @@ if (isset($_POST['upload'])) {
                                         <input class="form-control form-control-sm" id="formFileSm" name="file3" type="file" required>
                                     </div>
                                     <div class="input-group-prepend">
-                                        <input type="submit" class="btn btn-secondary my-3 w-100" value="Feltöltés" name="upload" />
+                                        <input type="submit" class="btn btn-primary my-3 w-100" value="Feltöltés" name="upload" />
                                     </div>
                         </form>
                     </div>
