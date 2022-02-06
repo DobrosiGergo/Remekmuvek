@@ -12,7 +12,7 @@ error_reporting(0);
     <ul class="list-unstyled components">
       <p>Az oldalon megtalálható az összes eltárolt remekművek.</p>
       <li class="active">
-      <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Fő oldal</a>
+      <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Főoldal</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
         <li>
             <a href="index.php">Főoldal</a>

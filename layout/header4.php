@@ -2,10 +2,6 @@
 session_start();
 error_reporting(0);
 ?>
-<?php
-session_start();
-error_reporting(0);
-?>
 <div class="wrapper">
   <!-- Sidebar  -->
   <nav id="sidebar">
@@ -22,7 +18,7 @@ error_reporting(0);
             <a href="../index.php">Főoldal</a>
           </li>
           <li>
-            <a href="megtekint.php">Remekművek</a>
+            <a href="../modul/megtekint.php">Remekművek</a>
           </li>
         </ul>
       </li>
@@ -31,24 +27,24 @@ error_reporting(0);
                     <ul class="collapse list-unstyled" id="pageSubmenu">
         <?php if ($_SESSION['type'] == "Felhasználó" || $_SESSION['type'] == "Szerkesztő" || empty($_SESSION['type'])) : ?>
               <li class="nav-item">
-                <a class="nav-link" href="megtekint.php">Megtekintés</a>
+                <a class="nav-link" href="../modul/megtekint.php">Megtekintés</a>
               </li>
             <?php endif; ?>
             <?php if ($_SESSION['type'] == "Szerkesztő") : ?>
               <li class="nav-item">
-                <a class="nav-link" href="szerkesztes.php">Szerkesztés</a>
+                <a class="nav-link" href="..\modul\szerkesztes.php">Szerkesztés</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="feltolt.php">Feltöltés</a>
+                <a class="nav-link" href="..\modul\feltolt.php">Feltöltés</a>
               </li>
             <?php endif ?>
             <?php if ($_SESSION['van'] === 1) : ?>
               <li class="nav-item">
-                <a class="nav-link" href="..\login\logout.php">Kijelentkezés</a>
+                <a class="nav-link" href="logout.php">Kijelentkezés</a>
               </li>
             <?php else : ?>
               <li class="nav-item">
-                <a class="nav-link" href="..\login\login.php">Bejelentkezés</a>
+                <a class="nav-link" href="login.php">Bejelentkezés</a>
               </li>
             <?php endif ?>
 
@@ -65,24 +61,24 @@ error_reporting(0);
           <ul class="nav navbar-nav ml-auto">
             <?php if ($_SESSION['type'] == "Felhasználó" || $_SESSION['type'] == "Szerkesztő" || empty($_SESSION['type'])) : ?>
               <li class="nav-item">
-                <a class="nav-link" href="megtekint.php">Megtekintés</a>
+                <a class="nav-link" href="../modul/megtekint.php">Megtekintés</a>
               </li>
             <?php endif; ?>
             <?php if ($_SESSION['type'] == "Szerkesztő") : ?>
               <li class="nav-item">
-                <a class="nav-link" href="szerkesztes.php">Szerkesztés</a>
+                <a class="nav-link" href="..\modul\szerkesztes.php">Szerkesztés</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="feltolt.php">Feltöltés</a>
+                <a class="nav-link" href="..\modul\feltolt.php">Feltöltés</a>
               </li>
             <?php endif ?>
             <?php if ($_SESSION['van'] === 1) : ?>
               <li class="nav-item">
-                <a class="nav-link" href="..\login\logout.php">Kijelentkezés</a>
+                <a class="nav-link" href="logout.php">Kijelentkezés</a>
               </li>
             <?php else : ?>
               <li class="nav-item">
-                <a class="nav-link" href="..\login\login.php">Bejelentkezés</a>
+                <a class="nav-link" href="login.php">Bejelentkezés</a>
               </li>
             <?php endif ?>
 
