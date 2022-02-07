@@ -4,7 +4,7 @@ if (isset($_POST['upcomment'])) {
     $id = $_GET['id'];
     date_default_timezone_set('Europe/Budapest');
     $ido = $_POST['date'];
-    $uzenet = $_POST['comment'];
+    $uzenet = nl2br($_POST['comment']);
     $uid = $_POST['uid'];
     $commentsql = "INSERT INTO comments (userid, megjegyzes, ido, oldalszam) VALUES('$uid', '$uzenet', '$ido','$id')";
     $cutasitas = $dbc->prepare($commentsql);

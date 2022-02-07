@@ -4,7 +4,8 @@ if (isset($_POST['upload'])) {
     $varos = $_POST['varos'];
     $orszag = $_POST['orszag'];
     $nev = $_POST['nev'];
-    $leiras = $_POST['leiras'];
+    $leirasnotallowed ="'";
+    $leiras = str_replace($leirasnotallowed,"",$_POST['leiras']);
     $kategoria = $_POST['select'];
     $stilus = $_POST['select2'];
     print_r($_POST);

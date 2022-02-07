@@ -85,11 +85,10 @@ if (isset($_POST['search'])) {
         </div>
         <br>
         <?php foreach ($adat as $sor) : ?>
-            <div class="card" style="width: 30rem; height:55rem;  display:inline-block!important;">
+            <div class="card" style="width: 30rem; height:30rem;  display:inline-block!important;">
                 <img class="card-img-top" src="../files/kepek/borito/<?= $sor["kep3"] ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?= $sor["nev"] ?></h5>
-                    <p class="card-text"><?= $sor["leiras"] ?></p>
                     <p class="card-text"><?= $sor["kategoria"] ?></p>
                     <a href="megtekintes.php?id=<?= $sor["id"] ?>" class="btn btn-primary w-100">Megtekintés</a>
                 </div>

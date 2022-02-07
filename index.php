@@ -22,16 +22,15 @@
       ?>
    
     <div class="main">
+      <div class="line"></div> 
+<h2>Az építészet</h2>
+<p>Építészet olyan alkalmazott tudományos és művészeti szakterület, amely az épületek és építmények létrehozásával, tágabb értelemben az épített környezet kialakításával foglalkozik. Az emberi kultúra, az emberi tevékenység egyik legalapvetőbb megjelenési formájaként egyrészt alkalmazott művészet, másrészt mérnöki tudomány, technológiai diszciplína. Az embert körülvevő természeti környezet olyan, akaratlagos megváltoztatása, amelynek „erőszakossága” konstruktív.</p>
       <div class="line"></div>
-
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis deserunt accusamus dolore aliquam eos earum, cupiditate ipsum adipisci facilis, iusto ipsa quo vero quibusdam ex eveniet. Doloremque nam earum quibusdam.</p>
-
-      <div class="line"></div>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam rem, distinctio ratione fugiat tenetur doloribus ab fuga sunt eligendi, velit quidem. Nisi officia magnam voluptatem aspernatur facere cumque vero eius.</p>
-
+<h2>Gótika</h2>
+<p>A gótika az érett középkor művészetének egyik irányzata, de megjelenésének technikai és társadalmi körülményeivel együtt történelmi korszaknak is tekinthető. Észak-Franciaországban a román művészetből fejlődött ki a 12. században, majd egész Nyugat-Európában, valamint Észak-, Dél- és Közép-Európa nagy részén is elterjedt.</p>
 
       <div class="line"></div>
-   
+   <img src="files/kepek/fokep.jfif" class="img-fluid rounded-circle mx-auto d-block">
     <div class="footer">
       <?php
       include_once 'layout/footer.php';
